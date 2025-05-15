@@ -42,5 +42,29 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities, theme, variants }) {
+      const aspectRatioUtilities = {
+        '.aspect-w-1': {
+          paddingBottom: '100%',
+          position: 'relative',
+        },
+        '.aspect-w-16': {
+          paddingBottom: '56.25%', // 16:9 aspect ratio
+          position: 'relative',
+        },
+        '.aspect-h-9': {
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          bottom: '0',
+          left: '0',
+          height: '100%',
+          width: '100%',
+        },
+      };
+
+      addUtilities(aspectRatioUtilities, ['responsive']);
+    },
+  ],
 };
